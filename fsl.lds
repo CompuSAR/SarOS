@@ -1,4 +1,4 @@
-MEMORY { .sram : ORIGIN = 0x20000, LENGTH = 0xbf00 }
+MEMORY { .sram : ORIGIN = 0x20060, LENGTH = 0xbf00 }
 MEMORY { .error : ORIGIN = 0xff0000, LENGTH = 0 }
 OUTPUT_FORMAT("elf64-littleaarch64", "elf64-littleaarch64", "elf64-littleaarch64")
 OUTPUT_ARCH(aarch64)
@@ -7,6 +7,7 @@ SECTIONS
 {
     .text : {
         . = ALIGN(8);
+        boot0.o (.text*)
         *(.text*)
     } >.sram
     .data : {
