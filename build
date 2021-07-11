@@ -1,7 +1,0 @@
-#!/bin/sh -e
-
-aarch64-linux-gnu-as -g -c boot0.s -o boot0.o
-aarch64-linux-gnu-g++ -O2 -g -c leds.cpp -o leds.o
-aarch64-linux-gnu-ld -g -T fsl.lds leds.o boot0.o -o fsl.elf
-aarch64-linux-gnu-objcopy -O binary fsl.elf fsl.bin
-../u-boot/tools/mkimage -T sunxi_egon -n "sun50i-h616-orangepi-zero2" -d fsl.bin fsl.img
